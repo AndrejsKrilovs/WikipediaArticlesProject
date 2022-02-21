@@ -1,0 +1,1 @@
+create sequence hibernate_sequence start with 100 increment by 1;
