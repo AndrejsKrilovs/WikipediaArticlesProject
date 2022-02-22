@@ -1,4 +1,4 @@
-package interview.wikicredit;
+package interview.wikicredit.controller;
 
 import interview.wikicredit.data.WikipediaData;
 import org.springframework.web.bind.annotation.GetMapping;

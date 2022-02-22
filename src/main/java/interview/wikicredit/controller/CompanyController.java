@@ -1,4 +1,4 @@
-package interview.wikicredit;
+package interview.wikicredit.controller;
 
 import interview.wikicredit.data.Company;
 import interview.wikicredit.service.CompanyService;

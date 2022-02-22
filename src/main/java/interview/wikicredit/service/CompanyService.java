@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ValidationException;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,6 +43,8 @@ public class CompanyService {
      * @return added company or error message
      */
     public Company addCompany(Company companyToAdd) {
+        Objects.requireNonNull(companyToAdd, "Company instance cannot be empty!");
+
         boolean checkForDuplicate = companyRepository.findAll().stream()
                 .anyMatch(company -> companyToAdd.getName().equals(company.getName()));
 
@@ -49,10 +52,8 @@ public class CompanyService {
             throw new DuplicateKeyException("Company already exists in database!");
         }
 
-        Objects.requireNonNull(companyToAdd, "Company instance cannot be empty!");
-
         if(companyToAdd.getName().isBlank()) {
-            throw new RuntimeException("Company name cannot be empty!");
+            throw new ValidationException("Company name cannot be empty!");
         }
 
         return companyRepository.save(companyToAdd);
