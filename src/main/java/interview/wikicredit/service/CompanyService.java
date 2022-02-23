@@ -17,7 +17,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
-    private final static String COMPANY_NOT_FOUND_EXCEPTION = "Company %d not found!";
+    private final static String COMPANY_NOT_FOUND_EXCEPTION = "Company %s not found!";
     private final static String DUPLICATE_COMPANY_EXCEPTION = "Company %s already exists in database!";
     private final static String COMPANY_NAME_VALIDATE_EXCEPTION = "Company name cannot be empty!";
 
@@ -32,13 +32,13 @@ public class CompanyService {
     }
 
     /**
-     * Finds company by identifier
-     * @param companyId is a company identifier
+     * Finds company by name
+     * @param companyName is a name of company
      * @return company from database or error message
      */
-    public Company findCompanyById(Integer companyId) {
-        String errorMessage = String.format(COMPANY_NOT_FOUND_EXCEPTION, companyId);
-        return companyRepository.findById(companyId)
+    public Company findCompanyByName(String companyName) {
+        String errorMessage = String.format(COMPANY_NOT_FOUND_EXCEPTION, companyName);
+        return companyRepository.findByName(companyName)
                 .orElseThrow(() -> new EntityNotFoundException(errorMessage));
     }
 

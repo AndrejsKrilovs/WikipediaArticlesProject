@@ -28,12 +28,22 @@ public class CompanyController {
 
     /**
      * Endpoint for find company
-     * @param id is a company identifier
+     * @param company is a company identifier
      * @return company from database
      */
     @GetMapping("/Company({id})")
-    public Company getCompany(@PathVariable Integer id) {
-        return companyService.findCompanyById(id);
+    public Company getCompany(@PathVariable("id") Company company) {
+        return company;
+    }
+
+    /**
+     * Endpoint for find company
+     * @param companyName is a name of company
+     * @return company from database
+     */
+    @GetMapping("/Company({name})")
+    public Company getCompanyByName(@PathVariable("name") String companyName) {
+        return companyService.findCompanyByName(companyName);
     }
 
     /**
