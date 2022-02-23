@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Mapper {
+    /**
+     * Maps database WikipediaData object to JSON
+     * @param wikipediaData is entity from database
+     * @return mapped JSON object
+     */
     public WikipediaDataDTO toDTO(WikipediaData wikipediaData) {
         return WikipediaDataDTO.builder()
                 .loadedDate(wikipediaData.getLoadingTimestamp().toLocalDateTime())

@@ -19,18 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class WikiLoadingController {
     private final Mapper mapper;
     private final WikiLoadingService wikiLoadingService;
-  /*
-  TODO: implement two endpoints.
-   One should create WikipediaData from Wikipedia REST API (see README.md), store it, and return loaded entity.
-   Second one should return WikipediaData from database, if such record exists.
-   Both endpoints should receive company id as an input, it is also up to you how to handle errors.
-   */
 
     /**
-     * Endpoint to load data from external service
+     * Endpoint to load data from external service and generate report.
      */
     @PostMapping("/{company}")
-    public WikipediaDataDTO loadEntity(@PathVariable("company") String name)  {
+    public WikipediaDataDTO loadEntityAndGenerateReport(@PathVariable("company") String name)  {
         return mapper.toDTO(wikiLoadingService.loadEntity(name));
     }
 }

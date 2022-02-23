@@ -38,7 +38,7 @@ public class WikiLoadingService {
      * If record exists in database, it automatically updates it.
      *
      * @param name is name of a company
-     * @return wikipedia data about company
+     * @return generated report data about company
      */
     public WikipediaData loadEntity(String name) {
         if (name.isBlank()) {
@@ -62,7 +62,6 @@ public class WikiLoadingService {
             } else {
                 entity = new WikipediaData();
                 entity.setCompany(company);
-
             }
 
             entity.setPageId(pageId);

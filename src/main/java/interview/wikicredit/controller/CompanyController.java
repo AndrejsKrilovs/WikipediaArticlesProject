@@ -31,7 +31,7 @@ public class CompanyController {
      * @param company is a company identifier
      * @return company from database
      */
-    @GetMapping("/Company({id})")
+    @GetMapping("/{id}")
     public Company getCompany(@PathVariable("id") Company company) {
         return company;
     }
