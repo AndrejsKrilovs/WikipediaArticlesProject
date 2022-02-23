@@ -4,11 +4,13 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
+/**
+ * WikipediaData table representation from database
+ */
 @Data
 public class WikipediaData {
-  int id;
-  boolean articleExists;
-  int pageId;
-  String summary;
-  Timestamp loadingTimestamp;
+  private Company cid;
+  private Integer pageId;
+  private String summary;
+  private Timestamp loadingTimestamp;
 }
