@@ -5,11 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  * Company table representation from database
@@ -23,6 +19,7 @@ import java.io.Serializable;
 public class Company {
   @Id
   @GeneratedValue
-  private Integer cid;
-  private String name;
+  @Column(name = "cid")
+  private Integer companyId;
+  private String companyName;
 }

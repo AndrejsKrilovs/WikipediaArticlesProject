@@ -1,6 +1,8 @@
 package interview.wikicredit.controller;
 
+import interview.wikicredit.Mapper;
 import interview.wikicredit.data.WikipediaData;
+import interview.wikicredit.data.WikipediaDataDTO;
 import interview.wikicredit.service.WikiLoadingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/wiki.svc")
 public class WikiLoadingController {
+    private final Mapper mapper;
     private final WikiLoadingService wikiLoadingService;
-
   /*
   TODO: implement two endpoints.
    One should create WikipediaData from Wikipedia REST API (see README.md), store it, and return loaded entity.
@@ -28,7 +30,7 @@ public class WikiLoadingController {
      * Endpoint to load data from external service
      */
     @PostMapping("/{company}")
-    public WikipediaData loadEntity(@PathVariable("company") String name)  {
-        return wikiLoadingService.loadEntity(name);
+    public WikipediaDataDTO loadEntity(@PathVariable("company") String name)  {
+        return mapper.toDTO(wikiLoadingService.loadEntity(name));
     }
 }

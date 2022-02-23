@@ -49,13 +49,13 @@ public class CompanyService {
      */
     public Company addCompany(Company companyToAdd) {
         boolean checkForDuplicate = companyRepository.findAll().stream()
-                .anyMatch(company -> companyToAdd.getName().equals(company.getName()));
+                .anyMatch(company -> companyToAdd.getCompanyName().equals(company.getCompanyName()));
 
         if(checkForDuplicate) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_COMPANY_EXCEPTION, companyToAdd.getName()));
+            throw new DuplicateKeyException(String.format(DUPLICATE_COMPANY_EXCEPTION, companyToAdd.getCompanyName()));
         }
 
-        if(companyToAdd.getName().isBlank()) {
+        if(companyToAdd.getCompanyName().isBlank()) {
             throw new ValidationException(COMPANY_NAME_VALIDATE_EXCEPTION);
         }
 

@@ -49,7 +49,7 @@ public class WikiLoadingService {
             Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
 
             WikipediaData entity = new WikipediaData();
-            entity.setCid(company);
+            entity.setCompany(company);
             entity.setPageId(pageId);
             entity.setSummary(summary);
             entity.setLoadingTimestamp(timestamp);
