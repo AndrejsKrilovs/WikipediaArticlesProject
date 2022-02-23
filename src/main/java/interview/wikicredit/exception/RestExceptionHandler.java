@@ -17,25 +17,51 @@ public class RestExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<Object> handleNullException(NullPointerException exception) {
-        CompanyExceptionResponse response = new CompanyExceptionResponse(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), LocalDateTime.now());
+        ExceptionResponse response = ExceptionResponse.builder()
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(exception.getMessage())
+                .dateTime(LocalDateTime.now())
+                .build();
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     public ResponseEntity<Object> handleRuntimeException(RuntimeException exception) {
-        CompanyExceptionResponse response = new CompanyExceptionResponse(HttpStatus.CONFLICT.value(), exception.getMessage(), LocalDateTime.now());
+        ExceptionResponse response = ExceptionResponse.builder()
+                .status(HttpStatus.CONFLICT.value())
+                .message(exception.getMessage())
+                .dateTime(LocalDateTime.now())
+                .build();
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler
     public ResponseEntity<Object> handleValidationException(ValidationException exception) {
-        CompanyExceptionResponse response = new CompanyExceptionResponse(HttpStatus.NOT_MODIFIED.value(), exception.getMessage(), LocalDateTime.now());
+        ExceptionResponse response = ExceptionResponse.builder()
+                .status(HttpStatus.NOT_MODIFIED.value())
+                .message(exception.getMessage())
+                .dateTime(LocalDateTime.now())
+                .build();
         return new ResponseEntity<>(response, HttpStatus.NOT_MODIFIED);
     }
 
     @ExceptionHandler
     public ResponseEntity<Object> handleNotFoundException(EntityNotFoundException exception) {
-        CompanyExceptionResponse response = new CompanyExceptionResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage(), LocalDateTime.now());
+        ExceptionResponse response = ExceptionResponse.builder()
+                .status(HttpStatus.NOT_FOUND.value())
+                .message(exception.getMessage())
+                .dateTime(LocalDateTime.now())
+                .build();
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Object> handleOtherExceptions(Exception exception) {
+        ExceptionResponse response = ExceptionResponse.builder()
+                .status(HttpStatus.FORBIDDEN.value())
+                .message(exception.getMessage())
+                .dateTime(LocalDateTime.now())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
     }
 }

@@ -21,5 +21,7 @@ public class Company {
   @GeneratedValue
   @Column(name = "cid")
   private Integer companyId;
+
+  @Column(name = "name")
   private String companyName;
 }

@@ -38,7 +38,7 @@ public class CompanyService {
      */
     public Company findCompanyByName(String companyName) {
         String errorMessage = String.format(COMPANY_NOT_FOUND_EXCEPTION, companyName);
-        return companyRepository.findByName(companyName)
+        return companyRepository.findByCompanyName(companyName)
                 .orElseThrow(() -> new EntityNotFoundException(errorMessage));
     }
 
@@ -59,9 +59,6 @@ public class CompanyService {
             throw new ValidationException(COMPANY_NAME_VALIDATE_EXCEPTION);
         }
 
-        Optional<Company> companyOptional = Optional.of(companyToAdd);
-        companyOptional.ifPresent(companyRepository::save);
-
-        return companyToAdd;
+        return companyRepository.save(companyToAdd);
     }
 }
