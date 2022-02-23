@@ -23,13 +23,4 @@ INSERT INTO WIKICREDIT.COMPANY (NAME) VALUES ('VEF');
 
 commit;
 
---
--- create table wikicredit.wikipedia_data
--- (
---     cid int,
---     page_id int,
---     summary text,
---     loading_timestamp timestamp
--- );
---
--- comment on table wikicredit.wikipedia_data is 'Data loaded from Wikipedia REST API';
+create sequence hibernate_sequence start with 100 increment by 1;
