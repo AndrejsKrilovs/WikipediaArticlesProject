@@ -19,6 +19,7 @@ import java.sql.Timestamp;
 @Table(schema = "wikicredit")
 public class WikipediaData {
   @Id
+  @GeneratedValue
   private Integer id;
 
   @OneToOne
