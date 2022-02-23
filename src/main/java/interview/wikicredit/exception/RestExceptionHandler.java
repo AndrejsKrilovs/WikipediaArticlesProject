@@ -1,6 +1,5 @@
 package interview.wikicredit.exception;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,7 +22,7 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Object> handleDuplicateException(RuntimeException exception) {
+    public ResponseEntity<Object> handleRuntimeException(RuntimeException exception) {
         CompanyExceptionResponse response = new CompanyExceptionResponse(HttpStatus.CONFLICT.value(), exception.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
